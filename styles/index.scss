@@ -1,5 +1,21 @@
+$body-bg: #F8FAFA;
+$body-color: #132C33;
+
+$light: #F8FAFA;
+
 $navbar-padding-y: 1.5rem;
+
+$navbar-toggler-padding-y: .25rem;
+$navbar-toggler-padding-x: .25rem;
+$navbar-toggler-focus-width: 0;
+$navbar-light-toggler-border-color: none;
+//$navbar-light-toggler-icon-bg:
+
+$nav-tabs-link-hover-border-color: none;
+
+
+
 
 // Example: override to give us a salmon body background
 
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap";
