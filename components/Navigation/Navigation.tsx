@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { CloseButton, Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import Container from '@/components/Container/Container';
 
 type Props = React.ComponentPropsWithoutRef<'div'>;
 
@@ -18,33 +20,40 @@ const Navigation = ({ ...divProps }: Props) => {
         expand={expand}
         className="mb-3 px-2 px-md-4"
       >
-        <Navbar.Brand href="#" className="ps-2">
-          Ján Korkoš
-        </Navbar.Brand>
-        <Navbar.Toggle
-          onClick={handleShow}
-          aria-controls={`offcanvasNavbar-expand-${expand}`}
-        />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-${expand}`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-          placement="end"
-          show={show}
-          onHide={handleClose}
-        >
-          <Offcanvas.Header className="py-4">
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-              Menu
-            </Offcanvas.Title>
-            <CloseButton onClick={handleClose} className="p-2 pe-3 m-1" />
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-start flex-grow-1 pe-3">
-              <Nav.Link href="#action1">About</Nav.Link>
-              <Nav.Link href="#action2">Blog</Nav.Link>
-            </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+        <Container fluid="xxl">
+          <Navbar.Brand href="/" className="ps-2" as={Link}>
+            Ján Korkoš
+          </Navbar.Brand>
+          <Navbar.Toggle
+            onClick={handleShow}
+            aria-controls={`offcanvasNavbar-expand-${expand}`}
+          />
+          <Navbar.Offcanvas
+            id={`offcanvasNavbar-expand-${expand}`}
+            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+            placement="end"
+            show={show}
+            onHide={handleClose}
+          >
+            <Offcanvas.Header className="py-4">
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                Menu
+              </Offcanvas.Title>
+              <CloseButton onClick={handleClose} className="p-2 pe-3 m-1" />
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="justify-content-start flex-grow-1 pe-3">
+                <Nav.Link as={Link} href="/about">
+                  About
+                </Nav.Link>
+                <Nav.Link as={Link} href="/blog">
+                  Blog
+                </Nav.Link>
+                {/*  TODO: fix Link to use NextLink (multiple places probably) */}
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
       </Navbar>
     </div>
   );

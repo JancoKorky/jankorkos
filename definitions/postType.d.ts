@@ -1,6 +1,5 @@
 interface PostType {
-  id: number;
   title: string;
-  content: string;
-  photo: string;
+  description: string;
+  url: string;
 }

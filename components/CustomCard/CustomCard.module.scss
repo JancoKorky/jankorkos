@@ -1,0 +1,30 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/variables";
+
+.CustomCard {
+  transition: transform 0.2s ease-in-out;
+  height: 280px;
+
+  @include media-breakpoint-up(sm) {
+    height: 500px;
+  }
+
+  &:hover {
+    transform: scale(1.025);
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: $font-size-base * 2.25;
+
+    @include media-breakpoint-up(sm) {
+      font-size: $font-size-base * 3;
+    }
+
+    @include media-breakpoint-up(md) {
+      font-size: $font-size-base * 4;
+    }
+  }
+
+}
