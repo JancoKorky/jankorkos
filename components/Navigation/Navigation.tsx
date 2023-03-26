@@ -7,10 +7,20 @@ type Props = React.ComponentPropsWithoutRef<'div'>;
 
 const Navigation = ({ ...divProps }: Props) => {
   const expand = 'md';
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const navigationLinks = [
+    {
+      url: '/about',
+      name: 'About',
+    },
+    {
+      url: '/blog',
+      name: 'Blog',
+    },
+  ];
 
   return (
     <div {...divProps}>
@@ -43,13 +53,15 @@ const Navigation = ({ ...divProps }: Props) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-start flex-grow-1 pe-3">
-                <Nav.Link as={Link} href="/about">
-                  About
-                </Nav.Link>
-                <Nav.Link as={Link} href="/blog">
-                  Blog
-                </Nav.Link>
-                {/*  TODO: fix Link to use NextLink (multiple places probably) */}
+                {navigationLinks.map((navigationLink) => (
+                  <Nav.Link
+                    key={'navigationLink' + navigationLink.name}
+                    as={Link}
+                    href={navigationLink.url}
+                  >
+                    {navigationLink.name}
+                  </Nav.Link>
+                ))}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

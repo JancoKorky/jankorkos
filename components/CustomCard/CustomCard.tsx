@@ -3,38 +3,46 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 
 interface Props {
-  imageUrl: string;
-  title: string;
-  description: string;
+  post: PostType;
 }
 
-const CustomCard = ({ imageUrl, title, description }: Props) => {
+const CustomCard = ({ post }: Props) => {
   return (
-    <Link href={'/post/1'}>
-      <Card className={classNames(classes.CustomCard, 'text-white border-0')}>
-        <Image
-          src={imageUrl}
-          alt="Card image"
-          fill
-          sizes="(max-width: 768px) 100vw,
+    <Col md>
+      <Link
+        href={{
+          pathname: '/blog/[slug]',
+          query: { slug: post.url },
+        }}
+      >
+        <Card className={classNames(classes.CustomCard, 'text-white border-0')}>
+          <Image
+            src={post.image}
+            alt="Card image"
+            fill
+            sizes="(max-width: 768px) 100vw,
               (max-width: 992px) 50vw,
               33vw"
-          className="object-fit-cover"
-          quality={100}
-        />
-        <Card.ImgOverlay className="d-flex flex-column justify-content-end">
-          <Card.Title
-            className={classNames(classes.CustomCard__title, 'text-uppercase')}
-          >
-            {title}
-          </Card.Title>
-          <Card.Text>{description}</Card.Text>
-        </Card.ImgOverlay>
-      </Card>
-    </Link>
+            className="object-fit-cover"
+            quality={100}
+          />
+          <Card.ImgOverlay className="d-flex flex-column justify-content-end">
+            <Card.Title
+              className={classNames(
+                classes.CustomCard__title,
+                'text-uppercase',
+              )}
+            >
+              {post.title}
+            </Card.Title>
+            <Card.Text>{post.description}</Card.Text>
+          </Card.ImgOverlay>
+        </Card>
+      </Link>
+    </Col>
   );
 };
 
