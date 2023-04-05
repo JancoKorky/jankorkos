@@ -20,7 +20,7 @@ $navbar-light-toggler-border-color: none;
 
 $nav-tabs-link-hover-border-color: none;
 
-
+.ce-block__content, .ce-toolbar__content { max-width:calc(100%) !important; } .cdx-block { max-width: 100% !important; }
 /*
  * Card styles
  */

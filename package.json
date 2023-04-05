@@ -11,6 +11,9 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.26.5",
+    "@editorjs/header": "^2.7.0",
+    "@editorjs/paragraph": "^2.9.0",
     "@next/font": "^13.2.3",
     "bootstrap": "^5.3.0-alpha1",
     "next": "^13.2.3",
