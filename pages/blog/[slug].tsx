@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import CustomCard from '@/components/CustomCard/CustomCard';
 import { posts as postsDB } from '@/db/post';
 import { postContent as postContentDB } from '@/db/postContent';
 import { PostContentType } from '@/definitions/postContentType';
-import CustomCard from '@/components/CustomCard/CustomCard';
 
 const BlogPost: NextPage<{ post: PostType; postContent: PostContentType }> = ({
   post,
@@ -28,9 +28,9 @@ const BlogPost: NextPage<{ post: PostType; postContent: PostContentType }> = ({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = postsDB.find((post) => post.url === params?.slug);
-  const postContent = postContentDB.find(
-    (postContent) => post?.id === postContent.postIdRef,
-  );
+  const postContent =
+    postContentDB.find((postContent) => post?.id === postContent.postIdRef) ||
+    null;
 
   return { props: { post, postContent } };
 };

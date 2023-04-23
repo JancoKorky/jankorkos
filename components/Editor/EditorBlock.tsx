@@ -22,7 +22,7 @@ const EditorBlock = ({ data, onChange, holder }: Props) => {
         holder: holder,
         tools: EDITOR_TOOLS,
         data,
-        async onChange(api, event) {
+        async onChange(api) {
           const data = await api.saver.save();
           onChange(data);
           console.log(data);
@@ -37,7 +37,7 @@ const EditorBlock = ({ data, onChange, holder }: Props) => {
         ref.current.destroy();
       }
     };
-  }, []);
+  });
 
   return (
     <Row>
