@@ -37,6 +37,17 @@ export const postContent: PostContentType[] = [
           type: 'paragraph',
           data: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas lobortis, tortor non venenatis congue, felis ante commodo odio, elementum pellentesque erat nunc non massa. Integer euismod nibh nulla, nec aliquam nisl sodales eu. Vestibulum mollis nunc nec blandit semper. Etiam nec diam diam. Maecenas accumsan leo ac sapien porta malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin in finibus odio, a tempor diam. Phasellus in maximus neque, sit amet posuere leo. Nullam neque tellus, tristique sit amet consectetur quis, consequat in est. Suspendisse ac ante odio.',
         },
+        {
+          type: 'image-block',
+          data: [
+            {
+              type: 'thumb-image',
+              data: {
+                url: '/../public/sunrise-1014712__340.jpg',
+              },
+            },
+          ],
+        },
       ],
     },
   },
