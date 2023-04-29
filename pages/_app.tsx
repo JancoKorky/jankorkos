@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={raleway.className}>
       <SSRProvider>
-        {process.env.NODE_ENV === 'development' && (
+        {process.env.DEPLOY === 'deployment' && (
           <>
             <Navigation />
             <Container fluid={'xxl'}>
