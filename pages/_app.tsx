@@ -12,10 +12,17 @@ const raleway = Raleway({
   display: 'swap',
 });
 export default function App({ Component, pageProps }: AppProps) {
+  const isDev =
+    process.env.VERCEL_ENV === 'development' ||
+    process.env.NEXT_PUBLIC_ENVIRONMENT === 'development';
+  const isProd =
+    process.env.VERCEL_ENV === 'production' ||
+    process.env.NEXT_PUBLIC_ENVIRONMENT === 'production';
+
   return (
     <div className={raleway.className}>
       <SSRProvider>
-        {process.env.NODE_ENV === 'development' && (
+        {isDev && (
           <>
             <Navigation />
             <Container fluid={'xxl'}>
@@ -23,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </Container>
           </>
         )}
-        {process.env.NODE_ENV === 'production' && <Maintenance />}
+        {isProd && <Maintenance />}
       </SSRProvider>
     </div>
   );
