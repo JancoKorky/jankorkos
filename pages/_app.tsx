@@ -12,12 +12,15 @@ const raleway = Raleway({
   display: 'swap',
 });
 export default function App({ Component, pageProps }: AppProps) {
-  const isDev =
-    process.env.VERCEL_ENV === 'development' ||
-    process.env.NEXT_PUBLIC_ENVIRONMENT === 'development';
-  const isProd =
-    process.env.VERCEL_ENV === 'production' ||
-    process.env.NEXT_PUBLIC_ENVIRONMENT === 'production';
+  let isDev, isProd;
+
+  if (process.env.NEXT_PUBLIC_ENVIRONMENT) {
+    isDev = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development';
+    isProd = process.env.NEXT_PUBLIC_ENVIRONMENT === 'production';
+  } else {
+    isDev = process.env.VERCEL_ENV === 'development';
+    isProd = process.env.VERCEL_ENV === 'production';
+  }
 
   return (
     <div className={raleway.className}>
